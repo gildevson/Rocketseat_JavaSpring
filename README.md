@@ -7,10 +7,11 @@ Lombok tem como intuito facilitar Primeira situação temos por na cabeça quand
 Digamos que na classe criei um objeto User 
 
 com seguintes tipos primitivos é private
--- private UUID id ;
--- private String Username;
--- private String name;
--- private String password;
+
+##private UUID id ;
+##private String Username;
+##private String name;
+##private String password;
 
 Eu poderia muito bem criar 
 
