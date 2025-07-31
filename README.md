@@ -1,20 +1,56 @@
-### O que tem nesse codigo ? 
+📌 O que tem nesse código?
+Antes de tudo, precisamos entender:
 
 
-(Primeira situação que temos que entender que é um lombok ? o que ele faz ?)
-Lombok tem como intuito facilitar Primeira situação temos por na cabeça quando usamos lombok, ele ajuda não encher muito seus codigos setter e getters.
+❓ O que é o Lombok?
+O Lombok é uma biblioteca (lib) para Java que tem como objetivo facilitar e reduzir a repetição de código.
+Ele ajuda a evitar a escrita manual de métodos como:
 
-Digamos que na classe criei um objeto User 
+getters
 
-com seguintes tipos primitivos é private
+setters
 
-##private UUID id ;
-##private String Username;
-##private String name;
-##private String password;
+toString()
 
-Eu poderia muito bem criar 
+equals() e hashCode()
 
-Varios Getters e Setters, normalmente fazemos isso quando é algo privado, reutilizamos nas outras classes de objetos.
+Construtores
 
-Por esse motivo usamos lombok que é uma LIB(Biblioteca) que ajuda facilita nosso codigo, deixando a semantica do codigo mais atrativos.
+🧠 Por que usar o Lombok?
+Imagine que temos a seguinte classe User com atributos privados:
+
+private UUID id;
+private String username;
+private String name;
+private String password;
+
+Normalmente, como os atributos são private, precisamos criar getters e setters para poder acessá-los e modificá-los em outras classes:
+
+public UUID getId() { return id; }
+public void setId(UUID id) { this.id = id; }
+
+public String getUsername() { return username; }
+public void setUsername(String username) { this.username = username; }
+// ... e assim por diante
+
+
+Isso torna o código maçante e repetitivo.
+É aí que o Lombok entra para facilitar sua vida.
+
+Com a anotação @Data, por exemplo, o Lombok gera automaticamente todos os getters e setters, além de:
+
+toString()
+
+equals() e hashCode()
+
+Exemplo com Lombok:
+import lombok.Data;
+import java.util.UUID;
+
+@Data
+public class User {
+    private UUID id;
+    private String username;
+    private String name;
+    private String password;
+}
