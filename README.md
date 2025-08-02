@@ -54,3 +54,16 @@ public class User {
     private String name;
     private String password;
 }
+
+
+isso são anotações
+
+@Autowired
+@RequestMapping
+@postMapping
+@RequestBody
+@Id
+@Entity
+@GeneratedValue
+@CreationTimestamp
+@Column
