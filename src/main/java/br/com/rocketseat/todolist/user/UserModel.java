@@ -26,6 +26,8 @@ public class UserModel {
     @CreationTimestamp // quando foi criado
     private LocalDateTime createdAt;
 
+
+
     // getter e setters
     // quando utitlizamos quando vamos adicionar uma algo privado em outras classes usando esse objeto.
 

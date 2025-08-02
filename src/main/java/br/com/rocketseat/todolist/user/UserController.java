@@ -1,5 +1,6 @@
 package br.com.rocketseat.todolist.user;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,18 +27,23 @@ public class UserController {
     private IUserRepository userRepository;
 
     @PostMapping("/")
-    public UserModel create(@RequestBody UserModel userModel) {
+    public ResponseEntity create(@RequestBody UserModel userModel) { //é obrigatorio adicionar ResponseEntity quando selecionamos status
         var user = this.userRepository.findByUsername(userModel.getUsername());
 
         if (user != null) {
             System.out.println("Usuario já existe!");
             // Mensagem de erro
             // Status code
-            return ResponseEntity.status(HttpStatus.);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuario já existe:");
         }
+        var passwordHashred = BCrypt.withDefaults()
+                .hashToString(12, userModel.getPassword().toCharArray());
+
+        userModel.setPassword(passwordHashred);
+
 
         var userCreated = this.userRepository.save(userModel);
-        return userCreated;
+        return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);                                      // é obrigatorio adicionar ResponseEntity
 
     }
 }
