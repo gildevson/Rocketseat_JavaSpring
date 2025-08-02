@@ -1,5 +1,7 @@
 package br.com.rocketseat.todolist.user;
 
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,30 +9,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * modificador
- * Public
- * private
- * protected
- * */
+
+ modificador
+ Public
+ private
+ protected*/
+
+@Data
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    /** String texto
-     *  Integer (int ) numeros inteiros
-     * Double (double) Numero 0.0000
-     * Float (float) Números 0.0000
-     * char (A C)
-     * Date (data)
-     * Body
-     * */
-
+    @Autowired
+    private IUserRepository userRepository;
 
     @PostMapping("/")
-    public void create(@RequestBody UserModel userModel ) {
-        System.out.println("Nome do nome: " + userModel.getName());
-        System.out.println("Nome do usuario: " + userModel.getUsername());
+    public UserModel create(@RequestBody UserModel userModel) {
+        var user = this.userRepository.findByUsername(userModel.getUsername());
+
+        if (user != null) {
+            System.out.println("Usuario já existe!");
+            return null;
+        }
+
+        var userCreated = this.userRepository.save(userModel);
+        return userCreated;
 
     }
-
 }

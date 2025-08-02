@@ -1,5 +1,6 @@
 package br.com.rocketseat.todolist.user;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -15,12 +16,14 @@ public class UserModel {
     @Id // essa anotação vai definir seu id vai ser chave primaria da tabela tb_users
     @GeneratedValue(generator = "UUID") // GERADOR
     private UUID id;
+
+    @Column(unique = true)
     private String username;
     private String name;
     private String password;
 
 
-    @CreationTimestamp
+    @CreationTimestamp // quando foi criado
     private LocalDateTime createdAt;
 
     // getter e setters
