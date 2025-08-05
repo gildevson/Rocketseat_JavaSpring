@@ -58,12 +58,29 @@ public class User {
 
 isso são anotações
 
+@Data normalmente é utilizado para usado com lombok, para contribuir get e setter siga o exemplo abaixo.
 @Autowired
 @RequestMapping
 @postMapping
 @RequestBody
 @Id
-@Entity
+@Entity Utilizado para criar uma tabela baseado em um ORM(Obejto )
 @GeneratedValue
-@CreationTimestamp
+@CreationTimestamp 
 @Column
+
+Vamoslá que é seria Repository ? 
+
+Na verdade seria um contrato, camada de um repositorio que receber para gerenciar os, objetos, que é a camada de respository, ,ode de interface, temos os metodos que é um contrato, 
+
+Spring JPA QUE FAZ ?
+
+spring data Jpa é um projeto dentro do ecossistema spring que faclilita a interação, com banco de ddos relacionais, especificação JPA (JAVA PERSISTENCE API).
+
+Ele a abstrai a complexidade da persistencia de dados, permitindo que os desenvolvedores escrevam menos codigos boirplate e concentram mais na logica de negocios simplicaficando o Spring Data JPA, ajuda criar 
+a cmada de acsso os dados de forma. Mais rapido eficiente e oferecendo funcinalidade como CRUD(CREATE, READ , UPDATE, DELETE ), paginação automatica.
+
+portando 
+
+ORM é um consjunto geral ? 
+JPA define um padrão de ORM ? 
