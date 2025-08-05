@@ -43,7 +43,7 @@ public class UserController {
 
 
         var userCreated = this.userRepository.save(userModel);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);                                      // é obrigatorio adicionar ResponseEntity
+        return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);// é obrigatorio adicionar ResponseEntity
 
     }
 }
