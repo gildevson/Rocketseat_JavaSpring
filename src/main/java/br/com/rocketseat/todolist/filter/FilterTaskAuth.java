@@ -20,8 +20,9 @@ public class FilterTaskAuth extends OncePerRequestFilter {
     private IUserRepository userRepository;
 
     @Override
-    public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws IOException, ServletException {
+
 
         var servletPath = request.getServletPath();
 
@@ -44,7 +45,7 @@ public class FilterTaskAuth extends OncePerRequestFilter {
 
             if (user == null) {
                 // Se o usuário não existe, retorna 401 Unauthorized
-               response.sendError(401);
+                response.sendError(401);
             } else {
                 // Verifica a senha usando BCrypt
                 var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
